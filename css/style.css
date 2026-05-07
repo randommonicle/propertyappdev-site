@@ -584,6 +584,10 @@ a:hover {
   opacity: 0.85;
 }
 
+.screenshot-img--bottom {
+  object-position: bottom;
+}
+
 /* Lightbox */
 .lightbox {
   display: none;
