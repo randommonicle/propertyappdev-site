@@ -190,20 +190,53 @@
                 <span class="project-detail__value">Live — in active use by client</span>
               </div>
             </div>
-            <!-- Screenshot placeholder -->
+            <!-- Screenshots -->
             <div class="project-card__screenshots">
-              <div class="screenshots-placeholder" aria-label="Screenshots to be added">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2" y="6" width="28" height="20" rx="2" stroke="#9ca3af" stroke-width="1.5"/><circle cx="16" cy="16" r="4" stroke="#9ca3af" stroke-width="1.5"/><path d="M10 6V4M22 6V4" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg>
-                <p>Screenshots to be added</p>
+              <div class="screenshots-grid">
+                <img src="images/icc-hero.png" alt="AI Booking Platform — homepage showing AI assistant prompt" class="screenshot-img" loading="lazy">
+                <img src="images/icc-chat.png" alt="AI Booking Platform — conversational booking chat interface" class="screenshot-img" loading="lazy">
+                <img src="images/icc-booking.png" alt="AI Booking Platform — booking enquiry form" class="screenshot-img" loading="lazy">
+                <img src="images/icc-about.png" alt="AI Booking Platform — about section" class="screenshot-img" loading="lazy">
               </div>
             </div>
           </div>
         </article>
 
-        <!-- Project 3: Drone Survey -->
-        <article class="project-card" aria-labelledby="project-drone-title">
+        <!-- Project 3: ASH Inspection App -->
+        <article class="project-card" aria-labelledby="project-inspect-title">
           <div class="project-card__meta">
             <span class="project-card__number" aria-hidden="true">03</span>
+            <span class="project-card__tag">Android &amp; AI Development</span>
+          </div>
+          <div class="project-card__content">
+            <h3 class="project-card__title" id="project-inspect-title">Property Inspection App</h3>
+            <p class="project-card__subtitle">Built a bespoke Android application to replace paper-based property inspections at a RICS-regulated surveying firm.</p>
+            <div class="project-card__body">
+              <p>Property inspections at the firm previously relied on handwritten notes taken during site visits, transcribed into reports manually after the fact. I designed and built an Android application to replace the entire workflow, from on-site recording through to a delivered report.</p>
+              <p>The inspector records voice narrations during the inspection and photographs areas of concern. The app transcribes the audio via Deepgram, then passes the transcriptions to Claude Sonnet, which classifies each observation into the appropriate report section. Photographs are analysed by Claude Opus, which assigns each image to the relevant section and generates professional observation text for any area that was photographed but not narrated. A branded Word document is compiled from the output and emailed directly to the relevant parties on completion.</p>
+              <p>The stack is a Capacitor Android application, offline-first using SQLite with sync to Supabase on completion. The backend is a Node.js Express server deployed on Railway, handling transcription, AI classification and analysis, report generation via LibreOffice, and email delivery via Resend. The first live field test was completed in May 2026 on a real property inspection with a colleague.</p>
+            </div>
+            <div class="project-card__details">
+              <div class="project-detail">
+                <span class="project-detail__label">Stack</span>
+                <span class="project-detail__value">Capacitor Android, Node.js/Express, Supabase, Deepgram, Claude API (Opus + Sonnet), LibreOffice, Resend, Railway</span>
+              </div>
+              <div class="project-detail">
+                <span class="project-detail__label">Application</span>
+                <span class="project-detail__value">Internal tool for property inspections at a RICS-regulated chartered surveying firm</span>
+              </div>
+              <div class="project-detail">
+                <span class="project-detail__label">Status</span>
+                <span class="project-detail__value">Field tested — live inspection completed May 2026</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: Drone Survey -->
+        <article class="project-card" aria-labelledby="project-drone-title">
+          <div class="project-card__meta">
+            <span class="project-card__number" aria-hidden="true">04</span>
             <span class="project-card__tag">Drone Operations &amp; AI Integration</span>
           </div>
           <div class="project-card__content">
