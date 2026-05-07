@@ -46,6 +46,29 @@ if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
   revealEls.forEach(el => observer.observe(el));
 }
 
+// Screenshot lightbox
+const lightbox      = document.getElementById('lightbox');
+const lightboxImg   = document.getElementById('lightbox-img');
+const lightboxClose = document.getElementById('lightbox-close');
+
+document.querySelectorAll('.screenshot-img').forEach(img => {
+  img.addEventListener('click', () => {
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+function closeLightbox() {
+  lightbox.classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
 // Active nav link on scroll
 const sections  = document.querySelectorAll('section[id]');
 const navLinkEls = document.querySelectorAll('.nav__link');
