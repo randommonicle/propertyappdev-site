@@ -399,6 +399,19 @@ a:hover {
   align-items: start;
 }
 
+.about__photo-wrap {
+  margin-bottom: 2rem;
+}
+
+.about__photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 8%;
+  border: 2px solid var(--color-border);
+}
+
 .about__bio p {
   color: var(--color-text-muted);
   margin-bottom: 1.25rem;
