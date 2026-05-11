@@ -46,31 +46,56 @@ if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
   revealEls.forEach(el => observer.observe(el));
 }
 
-// Screenshot lightbox
+// Screenshot lightbox (mouse + keyboard)
 const lightbox      = document.getElementById('lightbox');
 const lightboxImg   = document.getElementById('lightbox-img');
 const lightboxClose = document.getElementById('lightbox-close');
+let   lightboxTrigger = null; // element that opened the lightbox — focus returns here on close
 
-document.querySelectorAll('.screenshot-img').forEach(img => {
-  img.addEventListener('click', () => {
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt;
-    lightbox.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-  });
-});
+function openLightbox(img) {
+  lightboxTrigger = img;
+  lightboxImg.src = img.src;
+  lightboxImg.alt = img.alt;
+  lightbox.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+  // Move focus into the dialog so keyboard users can dismiss it
+  lightboxClose.focus();
+}
 
 function closeLightbox() {
   lightbox.classList.remove('is-open');
   document.body.style.overflow = '';
+  // Restore focus to the image that opened the lightbox
+  if (lightboxTrigger) {
+    lightboxTrigger.focus();
+    lightboxTrigger = null;
+  }
 }
 
-lightboxClose.addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+document.querySelectorAll('.screenshot-img').forEach(img => {
+  // Make each screenshot keyboard-operable
+  img.setAttribute('tabindex', '0');
+  img.setAttribute('role', 'button');
+
+  img.addEventListener('click', () => openLightbox(img));
+  img.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openLightbox(img);
+    }
+  });
+});
+
+if (lightbox && lightboxClose) {
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+  });
+}
 
 // Active nav link on scroll
-const sections  = document.querySelectorAll('section[id]');
+const sections   = document.querySelectorAll('section[id]');
 const navLinkEls = document.querySelectorAll('.nav__link');
 
 if (sections.length && navLinkEls.length) {
@@ -91,4 +116,16 @@ if (sections.length && navLinkEls.length) {
   );
 
   sections.forEach(s => sectionObserver.observe(s));
+}
+
+// Show contact-form success banner when redirected back with ?success=true
+if (new URLSearchParams(window.location.search).get('success') === 'true') {
+  const successEl = document.getElementById('form-success');
+  if (successEl) {
+    successEl.hidden = false;
+    // Scroll the contact section into view so the user actually sees the confirmation
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'auto', block: 'start' });
+    // Clean the URL so a refresh doesn't re-show the banner
+    history.replaceState(null, '', window.location.pathname + window.location.hash);
+  }
 }

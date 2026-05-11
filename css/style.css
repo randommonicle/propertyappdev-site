@@ -34,8 +34,13 @@
 }
 
 html {
-  scroll-behavior: smooth;
   font-size: 16px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
@@ -364,12 +369,17 @@ a:hover {
   width: 100%;
   max-width: 360px;
   height: auto;
-  animation: rotate-slow 60s linear infinite;
 }
 
-@keyframes rotate-slow {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+@media (prefers-reduced-motion: no-preference) {
+  .hero__svg {
+    animation: rotate-slow 60s linear infinite;
+  }
+
+  @keyframes rotate-slow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
 }
 
 @media (max-width: 720px) {
@@ -631,20 +641,6 @@ a:hover {
   opacity: 1;
 }
 
-.screenshots-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 3rem 2rem;
-  border: 1px dashed var(--color-border);
-  border-radius: var(--radius-lg);
-  color: var(--color-text-muted);
-  font-size: 0.875rem;
-  text-align: center;
-}
-
 @media (max-width: 640px) {
   .project-card {
     grid-template-columns: 1fr;
@@ -712,6 +708,22 @@ a:hover {
   margin-bottom: 0 !important;
 }
 
+/* Form success banner */
+
+.form-success {
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-size: 0.9375rem;
+}
+
+.form-success[hidden] {
+  display: none;
+}
+
 /* Contact form */
 
 .contact-form {
@@ -749,7 +761,7 @@ a:hover {
 .form-input:focus {
   outline: none;
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(0, 180, 180, 0.15);
+  box-shadow: 0 0 0 3px var(--color-accent-dim);
 }
 
 .form-input::placeholder {

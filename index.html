@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Ben Graham — Senior Property Manager and developer building production AI tools for the property sector. Based in Cheltenham.">
-  <title>Ben Graham — bengraham.uk</title>
+  <title>Ben Graham — Property Technology &amp; AI Development | Cheltenham, UK</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <!-- OpenGraph -->
   <meta property="og:title" content="Ben Graham — Property Technology &amp; AI Development">
   <meta property="og:description" content="Senior Property Manager and developer building production AI tools for the property sector. The work shown here is live, built from scratch, and in daily use.">
@@ -19,13 +20,35 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <!-- Structured data: Person -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ben Graham",
+  "jobTitle": "Senior Property Manager",
+  "url": "https://bengraham.uk",
+  "image": "https://bengraham.uk/images/headshot.jpg",
+  "email": "ben@bengraham.uk",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Cheltenham",
+    "addressCountry": "GB"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/benjamin-graham-4b3ab563/",
+    "https://github.com/randommonicle"
+  ],
+  "knowsAbout": ["Property Management", "AI Adoption", "Anthropic Claude API", "Drone Surveys"]
+}
+  </script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <nav class="nav" role="navigation" aria-label="Main navigation">
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
       <div class="nav__inner container">
         <a href="#home" class="nav__logo" aria-label="Ben Graham — home">BG</a>
         <button class="nav__toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
@@ -302,6 +325,10 @@
             </div>
           </div>
 
+          <div class="form-success" id="form-success" role="status" aria-live="polite" hidden>
+            Thanks — your message has been sent. I'll be in touch shortly.
+          </div>
+
           <form
             class="contact-form"
             name="contact"
@@ -309,7 +336,6 @@
             netlify
             data-netlify="true"
             netlify-honeypot="bot-field"
-            novalidate
             aria-label="Contact form"
           >
             <input type="hidden" name="form-name" value="contact">
@@ -360,7 +386,7 @@
 
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="container site-footer__inner">
       <p class="site-footer__copy">&copy; <span id="footer-year"></span> Ben Graham</p>
       <nav class="site-footer__nav" aria-label="Footer navigation">
