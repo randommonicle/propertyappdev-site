@@ -73,10 +73,8 @@ function closeLightbox() {
 }
 
 document.querySelectorAll('.screenshot-img').forEach(img => {
-  // Make each screenshot keyboard-operable
-  img.setAttribute('tabindex', '0');
-  img.setAttribute('role', 'button');
-
+  // tabindex and role="button" are set directly in the HTML so they apply
+  // without JS. Click + Enter/Space handlers attach here.
   img.addEventListener('click', () => openLightbox(img));
   img.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') {
