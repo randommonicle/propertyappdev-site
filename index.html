@@ -3,15 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ben Graham — Senior Property Manager and developer building production AI tools for the property sector. Based in Cheltenham.">
+  <meta name="description" content="Ben Graham — Senior Property Manager building production AI tools for the property sector. Claude API, Netlify, drone surveys, and a full Android inspection app. Cheltenham, UK.">
   <title>Ben Graham — Property Technology &amp; AI Development | Cheltenham, UK</title>
+  <link rel="canonical" href="https://bengraham.uk/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <!-- Google Search Console verification — replace TOKEN_HERE after verifying domain ownership -->
+  <meta name="google-site-verification" content="REPLACE_WITH_GSC_TOKEN">
   <!-- OpenGraph -->
   <meta property="og:title" content="Ben Graham — Property Technology &amp; AI Development">
   <meta property="og:description" content="Senior Property Manager and developer building production AI tools for the property sector. The work shown here is live, built from scratch, and in daily use.">
-  <meta property="og:url" content="https://bengraham.uk">
+  <meta property="og:url" content="https://bengraham.uk/">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ben Graham">
+  <meta property="og:locale" content="en_GB">
   <meta property="og:image" content="https://bengraham.uk/images/headshot.jpg">
+  <meta property="og:image:alt" content="Ben Graham — portrait">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ben Graham — Property Technology &amp; AI Development">
   <meta name="twitter:description" content="Senior Property Manager and developer building production AI tools for the property sector.">
@@ -20,26 +26,59 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <!-- Structured data: Person -->
+  <!-- Structured data: Person + ProfessionalService -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Ben Graham",
-  "jobTitle": "Senior Property Manager",
-  "url": "https://bengraham.uk",
-  "image": "https://bengraham.uk/images/headshot.jpg",
-  "email": "ben@bengraham.uk",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Cheltenham",
-    "addressCountry": "GB"
-  },
-  "sameAs": [
-    "https://www.linkedin.com/in/benjamin-graham-4b3ab563/",
-    "https://github.com/randommonicle"
-  ],
-  "knowsAbout": ["Property Management", "AI Adoption", "Anthropic Claude API", "Drone Surveys"]
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://bengraham.uk/#person",
+      "name": "Ben Graham",
+      "jobTitle": "Senior Property Manager",
+      "url": "https://bengraham.uk/",
+      "image": "https://bengraham.uk/images/headshot.jpg",
+      "email": "ben@bengraham.uk",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cheltenham",
+        "addressCountry": "GB"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/benjamin-graham-4b3ab563/",
+        "https://github.com/randommonicle"
+      ],
+      "knowsAbout": [
+        "Residential Leasehold Management",
+        "AI Adoption",
+        "Anthropic Claude API",
+        "Full-Stack Web Development",
+        "Drone Surveys",
+        "Property Technology"
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://bengraham.uk/#service",
+      "name": "Ben Graham — Property Technology & AI Development",
+      "description": "AI adoption programmes, custom Claude API integrations, full-stack web platforms, and drone survey workflows for property and surveying firms.",
+      "url": "https://bengraham.uk/",
+      "image": "https://bengraham.uk/images/headshot.jpg",
+      "provider": { "@id": "https://bengraham.uk/#person" },
+      "areaServed": "GB",
+      "serviceType": [
+        "AI adoption consulting",
+        "Claude API integration",
+        "Full-stack web development",
+        "Drone survey operations"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cheltenham",
+        "addressCountry": "GB"
+      }
+    }
+  ]
 }
   </script>
 </head>
@@ -105,6 +144,11 @@
           <span class="section-label">About</span>
           <h2 class="section-title">Background</h2>
         </div>
+        <aside class="now-card" aria-label="Current focus">
+          <span class="now-card__label">Now</span>
+          <p class="now-card__body">Currently rolling out an AI-assisted property inspection app at a RICS-regulated chartered surveying firm, and exploring full-time roles in applied AI &amp; property technology. Open to conversations.</p>
+          <p class="now-card__date">Updated May 2026</p>
+        </aside>
         <div class="about__grid">
           <div class="about__bio">
             <div class="about__photo-wrap">
@@ -303,6 +347,30 @@
       </div>
     </section>
 
+    <!-- ===================== RECOMMENDATIONS =====================
+         Hidden until real quotes are obtained. Remove the `hidden`
+         attribute and fill the <blockquote> + <cite> blocks below
+         when ready. Add or remove .testimonial blocks as needed. -->
+    <section id="recommendations" class="recommendations section" aria-label="Recommendations" hidden>
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Recommendations</span>
+          <h2 class="section-title">What colleagues say</h2>
+        </div>
+        <div class="testimonials">
+          <figure class="testimonial">
+            <blockquote class="testimonial__quote">
+              [Quote from a director or partner about working with Ben on the AI adoption programme.]
+            </blockquote>
+            <figcaption class="testimonial__cite">
+              <span class="testimonial__name">[Name]</span>
+              <span class="testimonial__role">[Role, Company]</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== CONTACT ===================== -->
     <section id="contact" class="contact section" aria-label="Contact">
       <div class="container">
@@ -404,5 +472,7 @@
   </div>
 
   <script src="js/main.js?v=2"></script>
+  <!-- Cloudflare Web Analytics — replace REPLACE_WITH_CF_TOKEN after enabling in Cloudflare dashboard -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE_WITH_CF_TOKEN"}'></script>
 </body>
 </html>

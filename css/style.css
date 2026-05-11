@@ -402,6 +402,38 @@ a:hover {
   border-bottom: 1px solid var(--color-border);
 }
 
+.now-card {
+  display: block;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+  padding: 1.25rem 1.5rem;
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-md);
+}
+
+.now-card__label {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+.now-card__body {
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  line-height: 1.55;
+}
+
+.now-card__date {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
 .about__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -816,6 +848,57 @@ a:hover {
 
 .site-footer__nav a:hover {
   color: var(--color-text);
+}
+
+/* ============================================================
+   Recommendations
+   ============================================================ */
+
+.recommendations {
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+}
+
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.testimonial {
+  margin: 0;
+  padding: 1.75rem;
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.testimonial__quote {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  font-style: italic;
+}
+
+.testimonial__quote::before { content: "\201C"; }
+.testimonial__quote::after  { content: "\201D"; }
+
+.testimonial__cite {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+}
+
+.testimonial__name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.testimonial__role {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
 }
 
 /* ============================================================
