@@ -1,0 +1,37 @@
+---
+layout: layouts/base.njk
+schemaType: article
+ogType: article
+---
+{%- set previous = collections.projects | getPreviousCollectionItem(page) %}
+{%- set next = collections.projects | getNextCollectionItem(page) %}
+    <article class="case">
+      <div class="container case__inner">
+        <p class="case__back"><a href="/#projects">All projects</a></p>
+        <header class="case__header">
+          <span class="section-label">{{ tag }}</span>
+          <h1 class="case__title">{{ heading }}</h1>
+          <p class="case__lead">{{ lead }}</p>
+        </header>
+        <dl class="case__facts">
+{%- for fact in facts %}
+          <div class="project-detail">
+            <dt class="project-detail__label">{{ fact.label }}</dt>
+            <dd class="project-detail__value">{{ fact.value | safe }}</dd>
+          </div>
+{%- endfor %}
+        </dl>
+        <div class="case__body">
+{{ content | safe }}
+        </div>
+        <nav class="case__more" aria-label="More projects">
+{%- if previous %}
+          <a class="case__more-link" href="{{ previous.url }}"><span class="case__more-label">Previous</span>{{ previous.data.cardTitle }}</a>
+{%- endif %}
+{%- if next %}
+          <a class="case__more-link case__more-link--next" href="{{ next.url }}"><span class="case__more-label">Next</span>{{ next.data.cardTitle }}</a>
+{%- endif %}
+        </nav>
+        <p class="case__contact">Questions about this work? Email <a href="mailto:{{ site.email }}">{{ site.email }}</a> or use the <a href="/#contact">contact form</a>.</p>
+      </div>
+    </article>

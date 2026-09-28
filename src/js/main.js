@@ -54,7 +54,8 @@ let   lightboxTrigger = null; // element that opened the lightbox — focus retu
 
 function openLightbox(img) {
   lightboxTrigger = img;
-  lightboxImg.src = img.src;
+  // Thumbnails are small; data-full points at the full-size screenshot
+  lightboxImg.src = img.dataset.full || img.currentSrc || img.src;
   lightboxImg.alt = img.alt;
   lightbox.classList.add('is-open');
   document.body.style.overflow = 'hidden';
@@ -92,7 +93,7 @@ if (lightbox && lightboxClose) {
   });
 }
 
-// Active nav link on scroll
+// Active nav link on scroll (home page sections; nav links are "/#section")
 const sections   = document.querySelectorAll('section[id]');
 const navLinkEls = document.querySelectorAll('.nav__link');
 
@@ -102,10 +103,7 @@ if (sections.length && navLinkEls.length) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           navLinkEls.forEach(link => {
-            link.classList.toggle(
-              'is-active',
-              link.getAttribute('href') === `#${entry.target.id}`
-            );
+            link.classList.toggle('is-active', link.hash === `#${entry.target.id}`);
           });
         }
       });
@@ -114,16 +112,4 @@ if (sections.length && navLinkEls.length) {
   );
 
   sections.forEach(s => sectionObserver.observe(s));
-}
-
-// Show contact-form success banner when redirected back with ?success=true
-if (new URLSearchParams(window.location.search).get('success') === 'true') {
-  const successEl = document.getElementById('form-success');
-  if (successEl) {
-    successEl.hidden = false;
-    // Scroll the contact section into view so the user actually sees the confirmation
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'auto', block: 'start' });
-    // Clean the URL so a refresh doesn't re-show the banner
-    history.replaceState(null, '', window.location.pathname + window.location.hash);
-  }
 }

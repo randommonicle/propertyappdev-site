@@ -1,0 +1,17 @@
+{
+  "name": "bengraham-uk",
+  "private": true,
+  "description": "Source for bengraham.uk, built with Eleventy and deployed on Netlify.",
+  "type": "module",
+  "scripts": {
+    "build": "node -e \"require('node:fs').rmSync('_site',{recursive:true,force:true})\" && eleventy && node scripts/check-site.mjs",
+    "check": "node scripts/check-site.mjs",
+    "start": "eleventy --serve"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.6"
+  }
+}
