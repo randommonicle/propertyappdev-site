@@ -54,7 +54,8 @@ let   lightboxTrigger = null; // element that opened the lightbox — focus retu
 
 function openLightbox(img) {
   lightboxTrigger = img;
-  lightboxImg.src = img.src;
+  // Thumbnails are small; data-full points at the full-size screenshot
+  lightboxImg.src = img.dataset.full || img.currentSrc || img.src;
   lightboxImg.alt = img.alt;
   lightbox.classList.add('is-open');
   document.body.style.overflow = 'hidden';

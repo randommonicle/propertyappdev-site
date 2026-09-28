@@ -12,8 +12,8 @@ export default {
   linkedin: "https://www.linkedin.com/in/benjamin-graham-chelt/",
   github: "https://github.com/randommonicle",
   headshot: "/images/headshot.jpg",
-  ogImage: "/images/headshot.jpg",
-  ogImageAlt: "Ben Graham",
+  ogImage: "/images/og-default.png",
+  ogImageAlt: "Ben Graham, Senior Property Manager and AI Lead, Cheltenham",
   // Both values are public by design: they are printed into every page.
   cloudflareBeaconToken: "745789769125425fa504f9fb796e71c9",
   googleSiteVerification: "a6hXxBcMDhwUTgPl5YzG_8dNqNYVCJUl3HqrNxqJUuA",

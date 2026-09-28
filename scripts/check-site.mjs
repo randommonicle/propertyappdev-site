@@ -134,9 +134,16 @@ for (const [rel, { html }] of pages) {
   const refs = [];
   for (const t of ["a", "link", "img", "script", "source", "form"]) {
     for (const attrs of tags(html, t)) {
-      for (const key of ["href", "src", "action"]) if (attrs[key] !== undefined) refs.push(attrs[key]);
+      for (const key of ["href", "src", "action", "data-full"]) if (attrs[key] !== undefined) refs.push(attrs[key]);
       if (attrs.srcset) refs.push(...attrs.srcset.split(",").map((s) => s.trim().split(/\s+/)[0]));
     }
+  }
+  // Images declare their size (no layout shift) and carry alt text. The
+  // lightbox's empty <img> is filled by script and exempt.
+  for (const img of tags(html, "img")) {
+    if (!img.src) continue;
+    if (img.alt === undefined) fail(rel, `<img src="${img.src}"> has no alt attribute`);
+    if (!img.width || !img.height) fail(rel, `<img src="${img.src}"> has no width and height`);
   }
   for (const ref of refs) {
     if (!ref || /^(https?:|mailto:|tel:|data:)/i.test(ref)) continue;
@@ -152,6 +159,17 @@ for (const [rel, { html }] of pages) {
     if (fragment && pages.has(target) && !pages.get(target).ids.has(fragment)) {
       fail(rel, `broken fragment: ${ref} (no id="${fragment}" in ${target})`);
     }
+  }
+}
+
+// 3b. Stylesheet url() references (fonts, images) resolve too.
+for (const rel of files.filter((f) => f.endsWith(".css"))) {
+  for (const m of read(rel).matchAll(/url\(\s*['"]?([^'")]+)['"]?\s*\)/g)) {
+    const ref = m[1];
+    if (/^(https?:|data:)/i.test(ref)) continue;
+    refCount++;
+    const abs = ref.startsWith("/") ? ref : posix.join(posix.dirname(`/${rel}`), ref);
+    if (!fileForPath(abs.split(/[?#]/)[0])) fail(rel, `broken url(): ${ref}`);
   }
 }
 
