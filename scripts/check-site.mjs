@@ -39,6 +39,12 @@ function tags(html, tagName) {
 
 const meta = (html, key, value) => tags(html, "meta").find((t) => t[key] === value);
 
+const decode = (s) => s
+  .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+  .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
+  .replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+  .replace(/&nbsp;/g, " ").replace(/&mdash;/g, "—").replace(/&ndash;/g, "–").replace(/&amp;/g, "&");
+
 // "index.html" -> "/", "projects/x/index.html" -> "/projects/x/", "404.html" -> "/404.html"
 function urlPathFor(rel) {
   if (rel === "index.html") return "/";
@@ -70,7 +76,7 @@ for (const rel of htmlFiles) {
 
 // 1. Repository files must never be published.
 const forbidden = [/^README\.md$/i, /^package(-lock)?\.json$/, /^netlify\.toml$/, /^eleventy\.config\.js$/,
-  /^\.env/, /^scripts\//, /^node_modules\//, /^src\//, /^docs\//];
+  /^\.env/, /^scripts\//, /^lib\//, /^node_modules\//, /^src\//, /^docs\//];
 for (const rel of files) {
   if (forbidden.some((re) => re.test(rel))) fail(rel, "repository file is in the published output");
 }
@@ -99,9 +105,27 @@ for (const [rel, page] of pages) {
   }
 
   if (!page.indexable) continue;
-  if (!meta(html, "name", "description")?.content) fail(rel, "missing meta description");
   const expected = ORIGIN + urlPathFor(rel);
   if (page.canonical !== expected) fail(rel, `canonical is ${page.canonical ?? "missing"}, expected ${expected}`);
+
+  // Search results cut titles at roughly 60 characters and descriptions at
+  // roughly 160; too short wastes the space.
+  const title = decode(titles[0]?.[1] ?? "");
+  if (title.length < 30 || title.length > 65) fail(rel, `title is ${title.length} characters (want 30 to 65): "${title}"`);
+  const description = decode(meta(html, "name", "description")?.content ?? "");
+  if (description.length < 70 || description.length > 170) fail(rel, `meta description is ${description.length} characters (want 70 to 170)`);
+
+  for (const prop of ["og:title", "og:description", "og:url", "og:image", "og:image:alt"]) {
+    if (!meta(html, "property", prop)?.content) fail(rel, `missing ${prop}`);
+  }
+  if (meta(html, "name", "twitter:card")?.content !== "summary_large_image") fail(rel, "missing twitter:card summary_large_image");
+  const ogUrl = meta(html, "property", "og:url")?.content;
+  if (ogUrl && ogUrl !== expected) fail(rel, `og:url is ${ogUrl}, expected ${expected}`);
+  const ogImage = meta(html, "property", "og:image")?.content ?? "";
+  if (ogImage && (!ogImage.startsWith(`${ORIGIN}/`) || !fileForPath(ogImage.slice(ORIGIN.length)))) {
+    fail(rel, `og:image must be an absolute ${ORIGIN} URL to a published file: ${ogImage}`);
+  }
+  if (!/<script type="application\/ld\+json">/.test(html)) fail(rel, "no JSON-LD structured data");
 }
 
 // 3. Every internal link, image and asset reference resolves, including #fragments.
@@ -135,7 +159,18 @@ for (const [rel, { html }] of pages) {
 if (!fileSet.has("sitemap.xml")) {
   fail("sitemap.xml", "missing");
 } else {
-  const locs = [...read("sitemap.xml").matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim());
+  const xml = read("sitemap.xml");
+  const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim());
+  const today = new Date().toISOString().slice(0, 10);
+  for (const entry of xml.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
+    const loc = entry[1].match(/<loc>([^<]+)<\/loc>/)?.[1] ?? "(no loc)";
+    const lastmod = entry[1].match(/<lastmod>([^<]*)<\/lastmod>/)?.[1] ?? "";
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(lastmod) || Number.isNaN(Date.parse(lastmod))) {
+      fail("sitemap.xml", `${loc} has lastmod "${lastmod}" (set "updated" in the page front matter as YYYY-MM-DD)`);
+    } else if (lastmod > today) {
+      fail("sitemap.xml", `${loc} has lastmod ${lastmod}, which is in the future`);
+    }
+  }
   const seen = new Set();
   for (const loc of locs) {
     if (seen.has(loc)) fail("sitemap.xml", `duplicate <loc> ${loc}`);

@@ -1,110 +1,10 @@
-<!DOCTYPE html>
-<html lang="en-GB">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ben Graham — Senior Property Manager building production AI tools for the property sector. Claude API, Netlify, drone surveys, and a full Android inspection app. Cheltenham, UK.">
-  <title>Ben Graham — Property Technology &amp; AI Development | Cheltenham, UK</title>
-  <link rel="canonical" href="https://bengraham.uk/">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <!-- Google Search Console verification -->
-  <meta name="google-site-verification" content="a6hXxBcMDhwUTgPl5YzG_8dNqNYVCJUl3HqrNxqJUuA">
-  <!-- OpenGraph -->
-  <meta property="og:title" content="Ben Graham — Property Technology &amp; AI Development">
-  <meta property="og:description" content="Senior Property Manager and developer building production AI tools for the property sector. The work shown here is live, built from scratch, and in daily use.">
-  <meta property="og:url" content="https://bengraham.uk/">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Ben Graham">
-  <meta property="og:locale" content="en_GB">
-  <meta property="og:image" content="https://bengraham.uk/images/headshot.jpg">
-  <meta property="og:image:alt" content="Ben Graham — portrait">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ben Graham — Property Technology &amp; AI Development">
-  <meta name="twitter:description" content="Senior Property Manager and developer building production AI tools for the property sector.">
-  <meta name="twitter:image" content="https://bengraham.uk/images/headshot.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <!-- Structured data: Person + ProfessionalService -->
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": "https://bengraham.uk/#person",
-      "name": "Ben Graham",
-      "jobTitle": "Senior Property Manager",
-      "url": "https://bengraham.uk/",
-      "image": "https://bengraham.uk/images/headshot.jpg",
-      "email": "ben@bengraham.uk",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Cheltenham",
-        "addressCountry": "GB"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/benjamin-graham-4b3ab563/",
-        "https://github.com/randommonicle"
-      ],
-      "knowsAbout": [
-        "Residential Leasehold Management",
-        "AI Adoption",
-        "Anthropic Claude API",
-        "Full-Stack Web Development",
-        "Drone Surveys",
-        "Property Technology"
-      ]
-    },
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://bengraham.uk/#service",
-      "name": "Ben Graham — Property Technology & AI Development",
-      "description": "AI adoption programmes, custom Claude API integrations, full-stack web platforms, and drone survey workflows for property and surveying firms.",
-      "url": "https://bengraham.uk/",
-      "image": "https://bengraham.uk/images/headshot.jpg",
-      "provider": { "@id": "https://bengraham.uk/#person" },
-      "areaServed": "GB",
-      "serviceType": [
-        "AI adoption consulting",
-        "Claude API integration",
-        "Full-stack web development",
-        "Drone survey operations"
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Cheltenham",
-        "addressCountry": "GB"
-      }
-    }
-  ]
-}
-  </script>
-</head>
-<body>
-
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <header class="site-header">
-    <nav class="nav" aria-label="Main navigation">
-      <div class="nav__inner container">
-        <a href="#home" class="nav__logo" aria-label="Ben Graham — home">BG</a>
-        <button class="nav__toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
-          <span class="nav__toggle-bar"></span>
-          <span class="nav__toggle-bar"></span>
-          <span class="nav__toggle-bar"></span>
-        </button>
-        <ul class="nav__links" id="nav-links" role="list">
-          <li><a href="#about" class="nav__link">About</a></li>
-          <li><a href="#projects" class="nav__link">Projects</a></li>
-          <li><a href="#contact" class="nav__link">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-
-  <main id="main-content">
+---
+layout: layouts/base.njk
+title: "Ben Graham | Senior Property Manager and AI Lead, Cheltenham"
+description: "Senior property manager in Cheltenham running a leasehold portfolio of more than 500 homes, and building the AI tools his team uses every day."
+schemaType: profile
+updated: "2026-09-28"
+---
 
     <!-- ===================== HERO ===================== -->
     <section id="home" class="hero section" aria-label="Introduction">
@@ -382,11 +282,11 @@
           <div class="contact__intro">
             <p>I am available for conversations about AI adoption projects, property technology roles, and freelance development work. Use the form to get in touch directly.</p>
             <div class="contact__links">
-              <a href="https://www.linkedin.com/in/benjamin-graham-4b3ab563/" class="contact__social-link" aria-label="LinkedIn profile" rel="noopener noreferrer" target="_blank">
+              <a href="{{ site.linkedin }}" class="contact__social-link" aria-label="LinkedIn profile" rel="noopener noreferrer" target="_blank">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
                 LinkedIn
               </a>
-              <a href="https://github.com/randommonicle" class="contact__social-link" aria-label="GitHub profile" rel="noopener noreferrer" target="_blank">
+              <a href="{{ site.github }}" class="contact__social-link" aria-label="GitHub profile" rel="noopener noreferrer" target="_blank">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 GitHub
               </a>
@@ -452,27 +352,3 @@
       </div>
     </section>
 
-  </main>
-
-  <footer class="site-footer">
-    <div class="container site-footer__inner">
-      <p class="site-footer__copy">&copy; <span id="footer-year"></span> Ben Graham</p>
-      <nav class="site-footer__nav" aria-label="Footer navigation">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </footer>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
-    <button class="lightbox__close" id="lightbox-close" aria-label="Close">&times;</button>
-    <img class="lightbox__img" id="lightbox-img" src="" alt="">
-  </div>
-
-  <script src="js/main.js?v=2"></script>
-  <!-- Cloudflare Web Analytics -->
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "745789769125425fa504f9fb796e71c9"}'></script>
-</body>
-</html>
