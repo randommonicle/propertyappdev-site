@@ -13,11 +13,13 @@
   status = 301
   force = true
 
-# Redirect /index.html to / (canonical)
+# Redirect /index.html to / (canonical). force is needed because a file
+# exists at /index.html, and Netlify skips unforced rules for existing files.
 [[redirects]]
   from = "/index.html"
   to   = "/"
   status = 301
+  force = true
 
 # Security headers
 [[headers]]
