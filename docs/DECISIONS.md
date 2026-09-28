@@ -58,13 +58,17 @@ Portfolio size, inspection count and the number of skills are written as "more t
 "more than 100" and "more than 40" and kept in `src/_data/site.js`. Update them there when
 the CV changes.
 
-### No legal basis is stated for the drone work
+### Drone work is described in the CAA's own terms
 
-The previous site said the drone was "sub-250g" and needed no further certification. The
-DJI Mini 5 Pro weighs about 252 to 253 g with its standard battery, and the CAA Drone Code
-(CAP 2320, March 2026) admits a drone to the A1 subcategory either because it is under
-250 g or because it carries a UK0, UK1 or C0 class mark. Until Ben confirms his basis, the
-site describes the work and makes no regulatory claim about it.
+The previous site said the drone needed no "GVC or PfCO" and that Ben held a "commercial
+drone operator certificate". Those terms are out of date or wrong: the PfCO no longer exists
+(the Operational Authorisation replaced it), and the Open category asks for a Flyer ID and
+an Operator ID, not an operator certificate. The CAA Drone
+Code (CAP 2320, March 2026) admits a drone to the A1 subcategory if it is under 250 g or
+carries a UK0, UK1 or C0 class mark. Ben confirmed on 2026-09-28 that his DJI Mini 5 Pro
+weighs 249 g with its battery, so the site states that weight and the A1 subcategory and
+nothing more. Independent testers have measured some Mini 5 Pro units at 252 to 253 g, so
+the figure is Ben's own aircraft, not the model in general.
 
 ### Fonts are self-hosted
 

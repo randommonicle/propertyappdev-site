@@ -13,7 +13,7 @@ updated: "2026-09-28"
 lead: "A proper look at a roof or an upper facade usually means scaffolding or a survey from the ground. I inspect residential blocks with a small drone instead, and Claude turns the imagery and my field recordings into a written report."
 facts:
   - label: Aircraft
-    value: "DJI Mini 5 Pro"
+    value: "DJI Mini 5 Pro, 249 g with its battery"
   - label: Work
     value: "Facade and roof inspections of residential leasehold developments"
   - label: Arrangement
@@ -25,6 +25,8 @@ facts:
 ## What the drone is for
 
 Routine condition checks on the parts of a building that are hard to see from the ground, such as roof coverings, gutters and the upper parts of a facade. A ground-level survey misses a lot of that, and scaffolding costs far too much for a routine look. The high-resolution imagery goes straight into maintenance planning and contractor briefings.
+
+The aircraft weighs 249 g with its battery, under the CAA's 250 g limit for the A1 subcategory of the Open category.
 
 ## The reporting side
 
