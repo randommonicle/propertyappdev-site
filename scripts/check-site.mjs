@@ -91,6 +91,19 @@ for (const rel of files) {
   for (const s of privateStrings) if (text.includes(s)) fail(rel, `contains private contact detail "${s}"`);
 }
 
+// 1c. House style and leftovers: no em dashes (Ben's rule for everything he
+// publishes) and no template placeholders in anything a visitor can read.
+const placeholders = [/\[(Quote|Name|Role)\b[^\]]*\]/, /PLACEHOLDER/, /lorem ipsum/i];
+for (const rel of files.filter((f) => /\.(html|xml)$/.test(f))) {
+  const text = read(rel);
+  if (/—|&mdash;|&#8212;|&#x2014;/i.test(text)) fail(rel, "contains an em dash");
+  for (const re of placeholders) if (re.test(text)) fail(rel, `contains placeholder text matching ${re}`);
+  // Markup that was escaped by the template engine shows up as literal text.
+  if (rel.endsWith(".html") && /&lt;\/?(a|p|strong|em|span|div|br|code)\b/i.test(text)) {
+    fail(rel, "escaped HTML tag is visible as text (a template value needs | safe)");
+  }
+}
+
 // 2. Per-page structure and metadata.
 for (const [rel, page] of pages) {
   const { html } = page;
@@ -130,6 +143,7 @@ for (const [rel, page] of pages) {
 
 // 3. Every internal link, image and asset reference resolves, including #fragments.
 let refCount = 0;
+const linkedFrom = new Set();
 for (const [rel, { html }] of pages) {
   const refs = [];
   for (const t of ["a", "link", "img", "script", "source", "form"]) {
@@ -145,6 +159,9 @@ for (const [rel, { html }] of pages) {
     if (img.alt === undefined) fail(rel, `<img src="${img.src}"> has no alt attribute`);
     if (!img.width || !img.height) fail(rel, `<img src="${img.src}"> has no width and height`);
   }
+  for (const a of tags(html, "a")) {
+    if (a.target === "_blank" && !/\bnoopener\b/.test(a.rel ?? "")) fail(rel, `link to ${a.href} opens a new tab without rel="noopener"`);
+  }
   for (const ref of refs) {
     if (!ref || /^(https?:|mailto:|tel:|data:)/i.test(ref)) continue;
     refCount++;
@@ -159,7 +176,14 @@ for (const [rel, { html }] of pages) {
     if (fragment && pages.has(target) && !pages.get(target).ids.has(fragment)) {
       fail(rel, `broken fragment: ${ref} (no id="${fragment}" in ${target})`);
     }
+    if (target !== rel) linkedFrom.add(target);
   }
+}
+
+// 3a. No orphans: every indexable page apart from the home page is linked
+// from at least one other page, or crawlers and visitors cannot reach it.
+for (const [rel, page] of pages) {
+  if (page.indexable && rel !== "index.html" && !linkedFrom.has(rel)) fail(rel, "no other page links to this page");
 }
 
 // 3b. Stylesheet url() references (fonts, images) resolve too.

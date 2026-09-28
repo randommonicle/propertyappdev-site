@@ -25,9 +25,15 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addShortcode("structuredData", (data) => structuredData(data));
 
+  // Case studies, in the order they appear on the home page.
+  eleventyConfig.addCollection("projects", (api) =>
+    api.getFilteredByGlob("src/projects/*.md").sort((a, b) => a.data.order - b.data.order),
+  );
+
   return {
     dir: { input: "src", output: "_site", includes: "_includes", data: "_data" },
-    templateFormats: ["njk", "html"],
+    templateFormats: ["njk", "html", "md"],
     htmlTemplateEngine: "njk",
+    markdownTemplateEngine: "njk",
   };
 }

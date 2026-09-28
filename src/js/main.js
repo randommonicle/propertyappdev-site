@@ -93,7 +93,7 @@ if (lightbox && lightboxClose) {
   });
 }
 
-// Active nav link on scroll
+// Active nav link on scroll (home page sections; nav links are "/#section")
 const sections   = document.querySelectorAll('section[id]');
 const navLinkEls = document.querySelectorAll('.nav__link');
 
@@ -103,10 +103,7 @@ if (sections.length && navLinkEls.length) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           navLinkEls.forEach(link => {
-            link.classList.toggle(
-              'is-active',
-              link.getAttribute('href') === `#${entry.target.id}`
-            );
+            link.classList.toggle('is-active', link.hash === `#${entry.target.id}`);
           });
         }
       });

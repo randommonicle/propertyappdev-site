@@ -12,6 +12,16 @@ export default {
   linkedin: "https://www.linkedin.com/in/benjamin-graham-chelt/",
   github: "https://github.com/randommonicle",
   headshot: "/images/headshot.jpg",
+  // Figures that change over time, worded so they stay true between updates.
+  // Source: CV (General v2, September 2026).
+  facts: {
+    homes: "more than 500",
+    developments: "20",
+    team: "four",
+    budgets: "around £1.3 million",
+    inspections: "more than 100",
+    skills: "more than 40",
+  },
   ogImage: "/images/og-default.png",
   ogImageAlt: "Ben Graham, Senior Property Manager and AI Lead, Cheltenham",
   // Both values are public by design: they are printed into every page.

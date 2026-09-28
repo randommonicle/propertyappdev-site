@@ -10,12 +10,12 @@ updated: "2026-09-28"
     <section id="home" class="hero section" aria-label="Introduction">
       <div class="container hero__inner">
         <div class="hero__content">
-          <p class="hero__eyebrow">Ben Graham</p>
-          <h1 class="hero__headline">Building AI tools<br>that are in production,<br>not in a demo.</h1>
-          <p class="hero__intro">Senior Property Manager and independent developer. I identify operational problems in the property sector, build software to solve them, and deploy it. The work shown here is live and in daily use.</p>
+          <p class="hero__eyebrow">Senior Property Manager and AI Lead, {{ site.locality }}</p>
+          <h1 class="hero__headline">{{ site.name }}</h1>
+          <p class="hero__intro">I manage a leasehold portfolio of {{ site.facts.homes }} homes across {{ site.facts.developments }} developments in {{ site.region }} for a RICS-regulated chartered surveying firm. I also lead the firm's use of AI and write the software my team works with, including an inspection app that has handled {{ site.facts.inspections }} site inspections since May 2026.</p>
           <div class="hero__cta">
-            <a href="#projects" class="btn btn--primary">View Projects</a>
-            <a href="/cv/ben-graham-cv.pdf" class="btn btn--ghost" download>Download CV</a>
+            <a href="#projects" class="btn btn--primary">See the work</a>
+            <a href="/cv/ben-graham-cv.pdf" class="btn btn--ghost" download>Download CV (PDF)</a>
           </div>
         </div>
         <div class="hero__graphic" aria-hidden="true">
@@ -46,58 +46,46 @@ updated: "2026-09-28"
         </div>
         <aside class="now-card" aria-label="Current focus">
           <span class="now-card__label">Now</span>
-          <p class="now-card__body">Currently rolling out an AI-assisted property inspection app at a RICS-regulated chartered surveying firm, and exploring full-time roles in applied AI &amp; property technology. Open to conversations.</p>
-          <p class="now-card__date">Updated May 2026</p>
+          <p class="now-card__body">Supporting the inspection app my colleagues use on site visits, building PropOS, and maintaining claude-skills, my open-source guardrails for Claude Code. I am also exploring full-time roles in applied AI and property technology, and I am open to conversations.</p>
+          <p class="now-card__date">Updated September 2026</p>
         </aside>
         <div class="about__grid">
           <div class="about__bio">
             <div class="about__photo-wrap">
               <img src="/images/headshot-240.webp" alt="Ben Graham" class="about__photo" width="120" height="120" loading="lazy" decoding="async">
             </div>
-            <p>I work as a Senior Property Manager at a RICS-regulated chartered surveying firm, where I manage approximately 23 residential leasehold developments. Alongside that role, I have designed and deployed production software tools, run a structured AI adoption programme for a professional team, and hold a commercial drone operator certificate for building facade and roof surveys.</p>
-            <p>My technical work focuses on solving real operational problems in property management. I use the Anthropic Claude API, Netlify serverless infrastructure, and standard web technologies to build tools that are actually used. The booking platform featured here processes live client appointments. The AI adoption programme I designed is in active use by colleagues. The drone survey workflow I built has replaced a manual reporting process.</p>
-            <p>I have no formal computer science background. Everything I know about building software I have learned by doing it, which I consider an advantage when the goal is practical output rather than theoretical correctness.</p>
+            <p>I am a Senior Property Manager at a RICS-regulated chartered surveying firm in {{ site.locality }}. My portfolio runs from new-build blocks to Grade II listed buildings, and I lead a team of {{ site.facts.team }} property managers. The work is statutory compliance (fire, asbestos, legionella and building safety), Section 20 consultations on major works, service charge budgets of {{ site.facts.budgets }}, and supporting resident management and right to manage company boards on governance, including running their AGMs.</p>
+            <p>Before that I was estate manager of a large private residential development for three and a half years, and before that I ran soft services and then the whole facilities operation at a student village. I have been the person on site and the person managing the portfolio, which is useful when the two disagree.</p>
+            <p>The software started as a way to fix problems in my own job. I began the firm's AI programme on my own initiative, without a brief or a budget, and it is now part of my role as AI Development Lead. I do not have a computer science degree. I learned to build software by shipping tools that colleagues rely on, and that has made me careful about testing and about what an AI model is allowed to do unchecked.</p>
           </div>
           <div class="about__skills">
             <h3 class="about__skills-title">Areas of work</h3>
             <ul class="skills-list" role="list">
+{%- for area in [
+  "Residential leasehold and block management, including Section 20 and service charges",
+  "Building safety and statutory compliance: fire, asbestos, legionella",
+  "Facilities and estates management",
+  "AI adoption: strategy, UK GDPR documentation, staff training and output checking",
+  "Claude API integration: classification, vision and document generation",
+  "Web and mobile development: TypeScript, React, Node.js, Supabase, Netlify, Capacitor",
+  "Drone surveys of roofs and facades"
+] %}
               <li class="skills-list__item">
                 <span class="skills-list__icon" aria-hidden="true">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 2l6 6-6 6" stroke="#D97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
-                Residential leasehold management and statutory compliance
+                {{ area }}
               </li>
-              <li class="skills-list__item">
-                <span class="skills-list__icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 2l6 6-6 6" stroke="#D97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                AI workflow design and enterprise adoption
-              </li>
-              <li class="skills-list__item">
-                <span class="skills-list__icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 2l6 6-6 6" stroke="#D97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                Claude API integration (chat, vision, document processing)
-              </li>
-              <li class="skills-list__item">
-                <span class="skills-list__icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 2l6 6-6 6" stroke="#D97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                Full-stack web development (HTML, JavaScript, Node.js, Netlify Functions, Netlify Blobs, Resend)
-              </li>
-              <li class="skills-list__item">
-                <span class="skills-list__icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 2l6 6-6 6" stroke="#D97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                Drone survey operations (DJI Mini 5 Pro, CAA permitted operations)
-              </li>
-              <li class="skills-list__item">
-                <span class="skills-list__icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 2l6 6-6 6" stroke="#D97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                Stakeholder management and professional reporting
-              </li>
+{%- endfor %}
             </ul>
+            <h3 class="about__skills-title about__skills-title--spaced">Career</h3>
+            <ol class="career-list" role="list">
+              <li class="career-list__item"><span class="career-list__years">2024 to now</span> Senior Property Manager and AI Development Lead, RICS-regulated chartered surveying firm, {{ site.locality }}</li>
+              <li class="career-list__item"><span class="career-list__years">2020 to 2024</span> Estate Manager, large private residential development, {{ site.locality }}</li>
+              <li class="career-list__item"><span class="career-list__years">2017 to 2020</span> Soft Services Manager, then Facilities General Manager, student village, {{ site.locality }}</li>
+              <li class="career-list__item"><span class="career-list__years">2011 to 2017</span> Security and accommodation roles, {{ site.locality }} and Gloucester</li>
+            </ol>
+            <p class="about__cv-link">The full history is in my <a href="/cv/ben-graham-cv.pdf" download>CV (PDF)</a>.</p>
           </div>
         </div>
       </div>
@@ -110,164 +98,25 @@ updated: "2026-09-28"
           <span class="section-label">Work</span>
           <h2 class="section-title">Projects</h2>
         </div>
+{%- for project in collections.projects %}
 
-        <!-- Project 1: ASH AI Adoption -->
-        <article class="project-card" aria-labelledby="project-ash-title">
+        <article class="project-card" aria-labelledby="project-{{ loop.index }}-title">
           <div class="project-card__meta">
-            <span class="project-card__number" aria-hidden="true">01</span>
-            <span class="project-card__tag">Enterprise AI Adoption</span>
+            <span class="project-card__number" aria-hidden="true">{{ "0" if loop.index < 10 }}{{ loop.index }}</span>
+            <span class="project-card__tag">{{ project.data.tag }}</span>
           </div>
           <div class="project-card__content">
-            <h3 class="project-card__title" id="project-ash-title">AI Adoption Programme</h3>
-            <p class="project-card__subtitle">Designed and led a structured AI adoption programme across a RICS-regulated chartered surveying firm.</p>
+            <h3 class="project-card__title" id="project-{{ loop.index }}-title"><a href="{{ project.url }}">{{ project.data.cardTitle }}</a></h3>
+            <p class="project-card__subtitle">{{ project.data.strap }}</p>
             <div class="project-card__body">
-              <p>As Senior Property Manager at a RICS-regulated chartered surveying firm, I identified a significant opportunity to integrate AI into the firm's professional workflows. With no external brief, no allocated budget, and no prior precedent within the business, I designed and led the full rollout of Anthropic Claude Team across a five-seat pilot. This included managing seat allocation, billing, and access controls, and producing a formal AI adoption strategy report presented to senior partners.</p>
-              <p>The practical output was a set of structured training sessions delivered to colleagues, alongside prompt frameworks and workflow guides covering property management use cases: LPE1 conveyancing enquiries, Section 20 consultation documentation, correspondence drafting, and lease interpretation. These are not demonstrations; they are in active daily use by five members of staff.</p>
-              <p>In parallel, I built an AI-assisted drone survey reporting workflow. Field inspection recordings and photographs captured on-site are processed through Claude to generate structured reports, replacing a largely manual process and reducing report turnaround time substantially. This workflow combines the drone survey operations described below with applied Claude API use.</p>
+              <p>{{ project.data.summary }}</p>
             </div>
-            <div class="project-card__details">
-              <div class="project-detail">
-                <span class="project-detail__label">Context</span>
-                <span class="project-detail__value">RICS-regulated chartered surveying firm, approximately 23 residential leasehold developments under management</span>
-              </div>
-              <div class="project-detail">
-                <span class="project-detail__label">Scope</span>
-                <span class="project-detail__value">Adoption strategy, training, prompt frameworks, workflow integration, drone survey reporting pipeline</span>
-              </div>
-              <div class="project-detail">
-                <span class="project-detail__label">Status</span>
-                <span class="project-detail__value">Live — in active use across the firm</span>
-              </div>
-            </div>
+            <p class="project-card__status"><span class="project-detail__label">Status</span> {{ project.data.status }}</p>
+            <p class="project-card__cta"><a href="{{ project.url }}">Read the case study<span class="visually-hidden">: {{ project.data.cardTitle }}</span></a></p>
           </div>
         </article>
+{%- endfor %}
 
-        <!-- Project 2: AI Booking Platform -->
-        <article class="project-card" aria-labelledby="project-icc-title">
-          <div class="project-card__meta">
-            <span class="project-card__number" aria-hidden="true">02</span>
-            <span class="project-card__tag">Full-Stack Development</span>
-          </div>
-          <div class="project-card__content">
-            <h3 class="project-card__title" id="project-icc-title">AI Booking Platform</h3>
-            <p class="project-card__subtitle">Designed and built a production AI-powered booking and customer engagement platform for a small business client.</p>
-            <div class="project-card__body">
-              <p>I designed and built a complete booking platform for a small business client, deployed on Netlify and in live operational use. The platform handles the full customer journey from initial enquiry through to confirmed appointment, using an AI chat assistant as the primary interface for conversational booking.</p>
-              <p>The stack is HTML with Netlify serverless functions in Node.js, Netlify Blobs for persistent booking storage, Resend for transactional email with Google Calendar link generation, and the Anthropic Claude API (claude-sonnet model) with vision capability. The AI assistant interprets customer enquiries in natural language, manages availability, prevents double-bookings through server-side logic, and hands off confirmed bookings to an automated email confirmation flow.</p>
-              <p>An admin dashboard sits behind authentication, allowing the client to view, manage, and export booking records. The platform replaced a manual phone and email enquiry process and has handled live bookings since deployment.</p>
-            </div>
-            <div class="project-card__details">
-              <div class="project-detail">
-                <span class="project-detail__label">Stack</span>
-                <span class="project-detail__value">HTML, Node.js, Netlify Functions, Netlify Blobs, Resend API, Anthropic Claude API</span>
-              </div>
-              <div class="project-detail">
-                <span class="project-detail__label">Features</span>
-                <span class="project-detail__value">Conversational AI booking, double-booking prevention, automated email confirmations, admin dashboard</span>
-              </div>
-              <div class="project-detail">
-                <span class="project-detail__label">Status</span>
-                <span class="project-detail__value">Live — in active use by client</span>
-              </div>
-            </div>
-            <!-- Screenshots -->
-            <div class="project-card__screenshots">
-              <div class="screenshots-grid">
-                <img src="/images/icc-1-800.webp" data-full="/images/icc-1.webp" alt="AI booking platform: homepage" class="screenshot-img" width="800" height="397" loading="lazy" decoding="async" tabindex="0" role="button" aria-label="Open enlarged view: homepage">
-                <img src="/images/icc-2-800.webp" data-full="/images/icc-2.webp" alt="AI booking platform: AI chat interface" class="screenshot-img" width="800" height="393" loading="lazy" decoding="async" tabindex="0" role="button" aria-label="Open enlarged view: AI chat interface">
-                <img src="/images/icc-3-800.webp" data-full="/images/icc-3.webp" alt="AI booking platform: booking enquiry form" class="screenshot-img screenshot-img--bottom" width="800" height="389" loading="lazy" decoding="async" tabindex="0" role="button" aria-label="Open enlarged view: booking enquiry form">
-                <img src="/images/icc-4-800.webp" data-full="/images/icc-4.webp" alt="AI booking platform: about section" class="screenshot-img" width="800" height="385" loading="lazy" decoding="async" tabindex="0" role="button" aria-label="Open enlarged view: about section">
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 3: ASH Inspection App -->
-        <article class="project-card" aria-labelledby="project-inspect-title">
-          <div class="project-card__meta">
-            <span class="project-card__number" aria-hidden="true">03</span>
-            <span class="project-card__tag">Android &amp; AI Development</span>
-          </div>
-          <div class="project-card__content">
-            <h3 class="project-card__title" id="project-inspect-title">Property Inspection App</h3>
-            <p class="project-card__subtitle">Built a bespoke Android application to replace paper-based property inspections at a RICS-regulated surveying firm.</p>
-            <div class="project-card__body">
-              <p>Property inspections at the firm previously relied on handwritten notes taken during site visits, transcribed into reports manually after the fact. I designed and built an Android application to replace the entire workflow, from on-site recording through to a delivered report.</p>
-              <p>The inspector records voice narrations during the inspection and photographs areas of concern. The app transcribes the audio via Deepgram, then passes the transcriptions to Claude Sonnet, which classifies each observation into the appropriate report section. Photographs are analysed by Claude Opus, which assigns each image to the relevant section and generates professional observation text for any area that was photographed but not narrated. A branded Word document is compiled from the output and emailed directly to the relevant parties on completion.</p>
-              <p>The stack is a Capacitor Android application, offline-first using SQLite with sync to Supabase on completion. The backend is a Node.js Express server deployed on Railway, handling transcription, AI classification and analysis, report generation via LibreOffice, and email delivery via Resend. The first live field test was completed in May 2026 on a real property inspection with a colleague.</p>
-            </div>
-            <div class="project-card__details">
-              <div class="project-detail">
-                <span class="project-detail__label">Stack</span>
-                <span class="project-detail__value">Capacitor Android, Node.js/Express, Supabase, Deepgram, Claude API (Opus + Sonnet), LibreOffice, Resend, Railway</span>
-              </div>
-              <div class="project-detail">
-                <span class="project-detail__label">Application</span>
-                <span class="project-detail__value">Internal tool for property inspections at a RICS-regulated chartered surveying firm</span>
-              </div>
-              <div class="project-detail">
-                <span class="project-detail__label">Status</span>
-                <span class="project-detail__value">Field tested — live inspection completed May 2026</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 4: Drone Survey -->
-        <article class="project-card" aria-labelledby="project-drone-title">
-          <div class="project-card__meta">
-            <span class="project-card__number" aria-hidden="true">04</span>
-            <span class="project-card__tag">Drone Operations &amp; AI Integration</span>
-          </div>
-          <div class="project-card__content">
-            <h3 class="project-card__title" id="project-drone-title">Drone Survey Operations</h3>
-            <p class="project-card__subtitle">Commercial building inspection using UAV under CAA permitted operations, with AI-assisted report generation.</p>
-            <div class="project-card__body">
-              <p>I conduct facade and roof inspections of residential leasehold developments using a DJI Mini 5 Pro UAV. At sub-250g, the aircraft operates under CAA permitted operations rules without requirement for a GVC or PfCO. This makes it practical for routine property inspection work without the overhead of a full commercial operator certification framework.</p>
-              <p>The operational workflow produces high-resolution imagery and field recordings that are used directly in maintenance planning and contractor briefings. Where in the past this kind of inspection would require scaffolding access or a manual survey from ground level, the drone survey provides comprehensive facade coverage at a fraction of the cost and time.</p>
-              <p>The reporting side of this workflow integrates directly with the AI adoption programme described above. Field inspection recordings and photographs are uploaded to Claude, which generates structured inspection reports to a defined template. This has substantially reduced the time between completing a survey and having a usable written report, and has improved consistency across report outputs.</p>
-            </div>
-            <div class="project-card__details">
-              <div class="project-detail">
-                <span class="project-detail__label">Aircraft</span>
-                <span class="project-detail__value">DJI Mini 5 Pro (sub-250g, CAA permitted operations)</span>
-              </div>
-              <div class="project-detail">
-                <span class="project-detail__label">Application</span>
-                <span class="project-detail__value">Facade and roof inspection for residential leasehold developments</span>
-              </div>
-              <div class="project-detail">
-                <span class="project-detail__label">AI integration</span>
-                <span class="project-detail__value">Field recordings and photographs processed through Claude to generate structured survey reports</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- ===================== RECOMMENDATIONS =====================
-         Hidden until real quotes are obtained. Remove the `hidden`
-         attribute and fill the <blockquote> + <cite> blocks below
-         when ready. Add or remove .testimonial blocks as needed. -->
-    <section id="recommendations" class="recommendations section" aria-label="Recommendations" hidden>
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">Recommendations</span>
-          <h2 class="section-title">What colleagues say</h2>
-        </div>
-        <div class="testimonials">
-          <figure class="testimonial">
-            <blockquote class="testimonial__quote">
-              [Quote from a director or partner about working with Ben on the AI adoption programme.]
-            </blockquote>
-            <figcaption class="testimonial__cite">
-              <span class="testimonial__name">[Name]</span>
-              <span class="testimonial__role">[Role, Company]</span>
-            </figcaption>
-          </figure>
-        </div>
       </div>
     </section>
 
@@ -280,13 +129,17 @@ updated: "2026-09-28"
         </div>
         <div class="contact__grid">
           <div class="contact__intro">
-            <p>I am available for conversations about AI adoption projects, property technology roles, and freelance development work. Use the form to get in touch directly.</p>
+            <p>I am happy to talk about property management and facilities roles, AI adoption, and development work. Email is quickest; the form goes to the same inbox.</p>
             <div class="contact__links">
-              <a href="{{ site.linkedin }}" class="contact__social-link" aria-label="LinkedIn profile" rel="noopener noreferrer" target="_blank">
+              <a href="mailto:{{ site.email }}" class="contact__social-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 7l10 7 10-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                {{ site.email }}
+              </a>
+              <a href="{{ site.linkedin }}" class="contact__social-link" rel="noopener noreferrer" target="_blank">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
                 LinkedIn
               </a>
-              <a href="{{ site.github }}" class="contact__social-link" aria-label="GitHub profile" rel="noopener noreferrer" target="_blank">
+              <a href="{{ site.github }}" class="contact__social-link" rel="noopener noreferrer" target="_blank">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 GitHub
               </a>
@@ -294,7 +147,7 @@ updated: "2026-09-28"
           </div>
 
           <div class="form-success" id="form-success" role="status" aria-live="polite" hidden>
-            Thanks — your message has been sent. I'll be in touch shortly.
+            Thanks, your message has been sent. I will reply soon.
           </div>
 
           <form
@@ -345,10 +198,9 @@ updated: "2026-09-28"
                 aria-required="true"
               ></textarea>
             </div>
-            <button class="btn btn--primary btn--full" type="submit">Send Message</button>
+            <button class="btn btn--primary btn--full" type="submit">Send message</button>
           </form>
 
         </div>
       </div>
     </section>
-
