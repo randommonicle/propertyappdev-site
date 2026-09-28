@@ -71,7 +71,8 @@ Both commands behave the same in PowerShell, cmd.exe and Git Bash.
 - The 404 or thanks page is indexable, or the contact form loses its Netlify name, honeypot,
   action or any of its fields.
 
-Each rule was shown to fail on a planted fault before it was relied on.
+Each rule has been shown to fail on a planted fault. When you add a rule, plant a fault
+in `_site/`, run `npm run check`, and confirm the new message appears before trusting it.
 
 ## Deploying
 
