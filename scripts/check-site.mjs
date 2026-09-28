@@ -227,6 +227,29 @@ if (!fileSet.has("sitemap.xml")) {
   }
 }
 
+// 4b. Netlify serves /404.html for missing pages; it must exist and stay out
+// of the index.
+if (!pages.has("404.html")) fail("404.html", "missing custom 404 page");
+else if (pages.get("404.html").indexable) fail("404.html", "404 page must carry noindex");
+
+// 4c. The contact form. Netlify registered it as "contact" with these fields
+// and sends its notifications on that basis; renaming either breaks them
+// without any error on the site.
+const home = pages.get("index.html")?.html ?? "";
+const form = tags(home, "form").find((f) => f.name === "contact");
+if (!form) {
+  fail("index.html", 'contact form (name="contact") is missing');
+} else {
+  if (form["data-netlify"] !== "true") fail("index.html", 'contact form lacks data-netlify="true"');
+  if (form["netlify-honeypot"] !== "bot-field") fail("index.html", 'contact form lacks netlify-honeypot="bot-field"');
+  if (form.action !== "/thanks/") fail("index.html", `contact form action is ${form.action ?? "missing"}, expected /thanks/`);
+  const fieldNames = new Set([...tags(home, "input"), ...tags(home, "textarea")].map((t) => t.name));
+  for (const name of ["form-name", "bot-field", "name", "email", "message"]) {
+    if (!fieldNames.has(name)) fail("index.html", `contact form has no field named "${name}"`);
+  }
+  if (pages.has("thanks/index.html") && pages.get("thanks/index.html").indexable) fail("thanks/index.html", "thanks page must carry noindex");
+}
+
 // 5. robots.txt points crawlers at the sitemap.
 if (!fileSet.has("robots.txt") || !read("robots.txt").includes(`Sitemap: ${ORIGIN}/sitemap.xml`)) {
   fail("robots.txt", `missing or lacks "Sitemap: ${ORIGIN}/sitemap.xml"`);

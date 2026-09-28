@@ -19,12 +19,6 @@
   to   = "/"
   status = 301
 
-# Netlify Forms success redirect
-[[redirects]]
-  from   = "/success"
-  to     = "/?success=true"
-  status = 200
-
 # Security headers
 [[headers]]
   for = "/*"

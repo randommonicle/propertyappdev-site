@@ -113,15 +113,3 @@ if (sections.length && navLinkEls.length) {
 
   sections.forEach(s => sectionObserver.observe(s));
 }
-
-// Show contact-form success banner when redirected back with ?success=true
-if (new URLSearchParams(window.location.search).get('success') === 'true') {
-  const successEl = document.getElementById('form-success');
-  if (successEl) {
-    successEl.hidden = false;
-    // Scroll the contact section into view so the user actually sees the confirmation
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'auto', block: 'start' });
-    // Clean the URL so a refresh doesn't re-show the banner
-    history.replaceState(null, '', window.location.pathname + window.location.hash);
-  }
-}
