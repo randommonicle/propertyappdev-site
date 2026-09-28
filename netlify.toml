@@ -43,3 +43,9 @@
   for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# The CV stays downloadable from the site but out of search results
+[[headers]]
+  for = "/cv/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"

@@ -75,6 +75,16 @@ for (const rel of files) {
   if (forbidden.some((re) => re.test(rel))) fail(rel, "repository file is in the published output");
 }
 
+// 1b. Only an email address is published. Word files carry the application CVs'
+// phone number, and text files must not contain it or the personal Gmail.
+const privateStrings = ["07712", "445209", "gmail.com"];
+for (const rel of files) {
+  if (/\.docx?$/i.test(rel)) fail(rel, "Word document in the published output (publish the email-only PDF instead)");
+  if (!/\.(html|xml|txt|css|js|json|svg|webmanifest)$/i.test(rel)) continue;
+  const text = read(rel);
+  for (const s of privateStrings) if (text.includes(s)) fail(rel, `contains private contact detail "${s}"`);
+}
+
 // 2. Per-page structure and metadata.
 for (const [rel, page] of pages) {
   const { html } = page;
